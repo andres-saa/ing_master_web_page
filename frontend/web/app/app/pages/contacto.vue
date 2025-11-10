@@ -99,6 +99,7 @@
 
 <script setup lang="ts">
 import { reactive, ref, computed, withDefaults } from 'vue'
+import hero from '~/assets/images/hero.jpeg'
 
 /** Props con valor por defecto TRUE */
 const props = withDefaults(defineProps<{
@@ -110,10 +111,9 @@ const props = withDefaults(defineProps<{
 /** Mostrar hero (respeta el prop, por defecto true) */
 const showHero = computed(() => props.show_hero)
 
-/** Fondo hero coherente con páginas anteriores */
-const heroBg =
-  'https://images.unsplash.com/photo-1543966888-7c1dc482a810?q=80&w=1920&auto=format&fit=crop'
 
+/* ====== Assets ====== */
+const heroBg = hero
 type Form = {
   name: string
   email: string

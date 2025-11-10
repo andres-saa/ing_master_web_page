@@ -118,10 +118,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-/** Fondo del hero (textura de hielo de tu captura). Cambia por tu asset si lo tienes local. */
-const heroBg =
-  'https://images.unsplash.com/photo-1543966888-7c1dc482a810?q=80&w=1920&auto=format&fit=crop' // textura de hielo
+import hero from '~/assets/images/hero.jpeg'
 
+/* ====== Assets ====== */
+const heroBg = hero
 /** Video de YouTube (pon el ID real de tu video) */
 const youtubeId = 'VIDEO_ID' // <- reemplaza por el ID real
 const ytEmbed = computed(() => `https://www.youtube.com/embed/${youtubeId}?rel=0`)
