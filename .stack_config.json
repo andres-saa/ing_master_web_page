@@ -1,0 +1,18 @@
+{
+  "project": "ing_master_webp",
+  "domain": "ingenieriamaster.com.co",
+  "email": "andrew19f@gmail.com",
+  "staging": false,
+  "use_pg": false,
+  "use_mongo": false,
+  "use_redis": false,
+  "backs": [
+    "socket"
+  ],
+  "fronts": [
+    {
+      "name": "web",
+      "kind": "nuxt"
+    }
+  ]
+}

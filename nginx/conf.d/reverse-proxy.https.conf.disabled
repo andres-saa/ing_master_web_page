@@ -1,0 +1,44 @@
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name web.ingenieriamaster.com.co;
+
+    ssl_certificate /etc/letsencrypt/live/web.ingenieriamaster.com.co/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/web.ingenieriamaster.com.co/privkey.pem;
+    include /etc/nginx/conf.d/ssl_params.conf;
+
+    location / {
+        proxy_pass http://front_web:3000;
+        include /etc/nginx/proxy_params.conf;
+    }
+}
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name www.web.ingenieriamaster.com.co;
+
+    ssl_certificate /etc/letsencrypt/live/www.web.ingenieriamaster.com.co/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.web.ingenieriamaster.com.co/privkey.pem;
+    include /etc/nginx/conf.d/ssl_params.conf;
+
+    location / {
+        return 301 https://web.ingenieriamaster.com.co$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name api.socket.ingenieriamaster.com.co;
+
+    ssl_certificate /etc/letsencrypt/live/api.socket.ingenieriamaster.com.co/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.socket.ingenieriamaster.com.co/privkey.pem;
+    include /etc/nginx/conf.d/ssl_params.conf;
+
+    location / {
+        proxy_pass http://api_socket:80;
+        include /etc/nginx/proxy_params.conf;
+    }
+}

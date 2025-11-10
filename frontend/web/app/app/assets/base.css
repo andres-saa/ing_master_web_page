@@ -1,0 +1,41 @@
+:root {
+  --topbar-h: 56px;                /* altura compacta como en el mock */
+  --bg: #08242d;                   /* azul petróleo oscuro */
+  --txt: #d7f3fb;                  /* texto claro */
+  --txt-dim: #a8c8d1;              /* texto desaturado */
+  --accent: #0ea5b6;               /* turquesa botón */
+  --accent-strong: #0891a2;
+  --white: #ffffff;
+  --bg: #0b1a24;
+  --card: #0f2230;
+  --ink: #e9f5ff;
+  --ink-dim: #c7e3f7;
+  --sky: #2ec5ff;
+  --sky-2: #6bd1ff;
+  --line: rgba(255,255,255,.08);
+  --bg: #0b1f2a;
+  --ink: #ffffff;
+  --ink-dim: #cfe3ec;
+  --accent: #0fb1c2;
+  --line: rgba(255,255,255,.12);
+  --ink-text : #0e2a36;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+
+
+html, body {
+  margin: 0;
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+  background: #0b1b20;
+  color: #e8f6fa;
+}
+
+/* opcional: normaliza enlaces del nav */
+a { color: inherit; }
