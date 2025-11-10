@@ -4,10 +4,8 @@
     <div class="topbar__inner">
       <!-- Logo -->
       <NuxtLink to="/" class="brand" aria-label="Inicio" @click="closeAll">
-
-        <img class="brand__icon" :src="logo" alt="" srcset="">
-       
-        <span class="brand__text">  INGENIERÍA MASTER</span>
+        <img class="brand__icon" :src="logo" alt="Ingeniería Master Logo" />
+        <span class="brand__text">INGENIERÍA MASTER</span>
       </NuxtLink>
 
       <!-- Nav (ESCRITORIO centrado) -->
@@ -41,6 +39,7 @@
 
             <ul
               ref="dropdownMenu"
+              
               class="dropdown__menu"
               :class="{ 'dropdown__menu--show': hoverServicios }"
               role="menu"
@@ -61,7 +60,9 @@
 
       <!-- CTA (escritorio) -->
       <div class="cta-desktop">
-        <NuxtLink to="/cotizar" class="cta">Cotizar ahora</NuxtLink>
+        <a :href="waUrl" class="cta" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+          Cotizar ahora
+        </a>
       </div>
 
       <!-- Backdrop (solo móvil) -->
@@ -118,7 +119,9 @@
               <li class="cta-wrap"></li>
             </ul>
 
-            <NuxtLink to="/cotizar" class="cta" @click="closeAll">Cotizar ahora</NuxtLink>
+            <a :href="waUrl" class="cta" target="_blank" rel="noopener" @click="closeAll" aria-label="Cotizar por WhatsApp">
+              Cotizar ahora
+            </a>
           </nav>
         </aside>
       </transition>
@@ -141,6 +144,7 @@
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import logo from '~/assets/images/logo.png'
+
 const route = useRoute()
 const open = ref(false)
 const openServicios = ref(false)
@@ -223,6 +227,11 @@ onBeforeUnmount(() => {
   lockScroll(false)
 })
 watch(() => route.fullPath, () => closeAll())
+
+// === WhatsApp CTA ===
+const waPhone = '573104080918' // +57 310 4080918 en formato internacional sin '+'
+const waText  = encodeURIComponent('¡Hola! Me gustaría cotizar un proyecto de refrigeración industrial. ¿Me ayudas?')
+const waUrl   = `https://wa.me/${waPhone}?text=${waText}`
 </script>
 
 <style scoped>
@@ -288,7 +297,7 @@ watch(() => route.fullPath, () => closeAll())
   opacity: 0; transform: translateY(-4px); pointer-events: none; transition: all .14s ease;
   z-index: 40; /* asegurar sobre contenido cercano */
 }
-.dropdown__menu--show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.dropdown__menu--show { opacity: 1; transform: translateY(0); pointer-events: auto;list-style: none; }
 .dropdown__menu li { list-style: none; }
 .dropdown__link { display: block; padding: 10px 12px; border-radius: .3rem; color: var(--txt); text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: .3px; }
 .dropdown__link:hover { background: rgba(255,255,255,.06); }
@@ -327,10 +336,10 @@ watch(() => route.fullPath, () => closeAll())
   .drawer__close { width: 38px; height: 38px; background: none; border: 0; color: var(--white); }
 
   .nav--mobile { padding: 6px 8px 18px; display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
-  .nav__list--mobile { display: grid; gap: 1.5rem; list-style: none; padding: 8px; margin: 0; };
+  .nav__list--mobile { display: grid; gap: 1.5rem; list-style: none; padding: 8px; margin: 0; }
 
   .nav__link.nav__link--button { width: 100%; text-align: left; }
-  .mobile-sub { margin: 4px 0 8px 10px; display: grid; gap: 4px; }
+  .mobile-sub { margin:1rem 0 0 0; display: grid; gap: 4px;list-style: none; }
 
   .cta-wrap { margin-top: 4px; }
 }

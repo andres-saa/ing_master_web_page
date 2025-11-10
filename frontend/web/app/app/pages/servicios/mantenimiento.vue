@@ -39,7 +39,7 @@
 
         <!-- ======= GALERÍA / CARRUSEL ======= -->
         <div class="carousel">
-          <button class="nav prev" @click="scrollPrev" aria-label="Anterior">‹</button>
+          <button class="nav prev" @click="scrollPrev" aria-label="Anterior">      <Icon name="mdi:arrow-left" aria-hidden="true" /> </button>
 
           <div ref="track" class="track" tabindex="0">
             <figure v-for="(img, i) in gallery" :key="i" class="item">
@@ -47,7 +47,7 @@
             </figure>
           </div>
 
-          <button class="nav next" @click="scrollNext" aria-label="Siguiente">›</button>
+          <button class="nav next" @click="scrollNext" aria-label="Siguiente"> <Icon name="mdi:arrow-right" aria-hidden="true" /></button>
         </div>
 
         <div class="dots" role="tablist" aria-label="Paginación galería">
@@ -82,17 +82,20 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import imgcuartosfiros from '~/assets/images/cuartos.jpg'
+import imgIndustriales from '~/assets/images/industriales.jpeg'
+import imgMantenimiento from '~/assets/images/mantenimiento.jpg'
+import imgSalaProceso from '~/assets/images/salaProceso.jpeg'
+import hero from '~/assets/images/hero.jpeg'
 
 /* ====== Assets ====== */
-const heroBg =
-  'https://images.unsplash.com/photo-1543966888-7c1dc482a810?q=80&w=1920&auto=format&fit=crop'
-
+const heroBg = hero
 const gallery = [
-  { src: 'https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1198&height=690&quality=75&smart=true', alt: 'Mantenimiento a compresor' },
-  { src: 'https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1198&height=690&quality=75&smart=true', alt: 'Chequeo de evaporadores' },
-  { src: 'https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1198&height=690&quality=75&smart=true', alt: 'Ajuste de puertas aisladas' },
+  { src: imgcuartosfiros , alt: 'Cuarto frío modular' },
+  { src:imgMantenimiento  , alt: 'Evaporadores en cámara' },
+  { src:imgIndustriales , alt: 'Sala de proceso refrigerada' },
+  { src: imgSalaProceso , alt: 'Puertas aisladas' },
 ]
-
 /* ====== FAQ ====== */
 const faqs = [
   {
@@ -171,7 +174,7 @@ html,body{margin:0;padding:0}
   min-height:48vh;
   background-position:center;
   background-size:cover;
-  display:flex; align-items:flex-end;
+  display:flex; align-items:center;
   padding:52px 0;
   border-bottom:1px solid #0f2a38;
 }
@@ -271,4 +274,29 @@ html,body{margin:0;padding:0}
   .container{ padding-left:18px; padding-right:18px; }
   .carousel{ grid-template-columns: 36px 1fr 36px; }
 }
+
+/* Full-bleed del carrusel en móviles */
+@media (max-width: 767.98px){
+  .carousel{
+    margin-left: -18px;
+    margin-right: -18px;
+  }
+
+  .viewport{
+    border-radius: 0;
+  }
+
+  /* Sin bordes redondeados en las slides e imágenes */
+  .slide{
+    border-radius: 0 !important;
+  }
+  .slide img{
+    border-radius: 0 !important;
+  }
+  .track{
+    border-radius: 0;
+  }
+}
+
+
 </style>

@@ -4,13 +4,19 @@
     <!-- ======= INSTAGRAM ======= -->
     <section class="ig">
       <div class="container">
-        <h3 class="ig__title">SÍGUENOS EN INSTAGRAM</h3>
+        <h3 class="ig__title">
+          <Icon name="mdi:instagram" class="ig__title-icon" />
+          <span>SÍGUENOS EN INSTAGRAM</span>
+        </h3>
 
         <!-- Header de cuenta -->
         <div class="ig__head">
           <img class="ig__avatar" :src="avatarSrc" alt="avatar instagram" />
           <div class="ig__user">
-            <a :href="profileUrl" target="_blank" rel="noopener">@{{ igUser }}</a>
+            <a :href="profileUrl" target="_blank" rel="noopener">
+              <Icon name="mdi:at" style="margin-right:.25rem" />
+              {{ igUser }}
+            </a>
           </div>
         </div>
 
@@ -19,7 +25,7 @@
           <NuxtLink
             v-for="(p, idx) in visiblePosts"
             :key="idx"
-            :href="p.href"
+            :href="p.href || profileUrl"
             class="ig__card"
             target="_blank"
             rel="noopener"
@@ -31,9 +37,11 @@
 
         <!-- Acciones -->
         <div class="ig__actions">
-          <button v-if="canLoadMore" class="btn btn--ghost" @click="loadMore">Cargar más…</button>
+          <button v-if="canLoadMore" class="btn btn--ghost" @click="loadMore">
+            <Icon name="mdi:plus" /> Cargar más…
+          </button>
           <a :href="profileUrl" target="_blank" rel="noopener" class="btn btn--primary">
-            Síguenos en Instagram
+            <Icon name="mdi:instagram" /> Síguenos en Instagram
           </a>
         </div>
       </div>
@@ -43,29 +51,15 @@
     <div class="container footer__top">
       <!-- Newsletter -->
       <div class="col">
-        <h4 class="tt">SUSCRÍBETE A NUESTRO NEWSLETTER</h4>
-        <form class="newsletter" @submit.prevent="onSubscribe">
-          <input
-            v-model="email"
-            type="email"
-            required
-            placeholder="tu@correo.com"
-            aria-label="Correo para suscripción"
-          />
-          <button type="submit" class="btn-sub">SUSCRIBIRSE</button>
-        </form>
-
-        <div class="brand-row">
-          <!-- Marca simple en SVG (reemplaza por tu logo si quieres) -->
-          <svg class="brand" viewBox="0 0 120 24" aria-hidden="true">
-            <rect x="0" y="6" width="28" height="12" rx="3"></rect>
-            <text x="38" y="17" font-size="12" fill="currentColor">Ingenieria Master</text>
-          </svg>
-        </div>
+        
 
         <div class="mini-links">
-          <NuxtLink to="/manual-proteccion-datos">Manual de protección de datos personales</NuxtLink>
-          <NuxtLink to="/terminos-y-condiciones">Términos y condiciones Ingenieria Master.com.co</NuxtLink>
+          <NuxtLink to="/manual-proteccion-datos">
+            <Icon name="mdi:shield-lock-outline" /> Manual de protección de datos personales
+          </NuxtLink>
+          <NuxtLink to="/terminos-y-condiciones">
+            <Icon name="mdi:file-document-outline" /> Términos y condiciones Ingenieria Master.com.co
+          </NuxtLink>
         </div>
       </div>
 
@@ -74,23 +68,34 @@
         <h4 class="tt">CONTÁCTANOS</h4>
         <p class="sub">COBERTURA EN TODO EL TERRITORIO NACIONAL</p>
         <p>LÍNEA NACIONAL</p>
-        <p><a href="tel:018000423789">018000 - 423789</a></p>
-        <p><a href="mailto:soporte@Ingenieria Mastersa.com">soporte@Ingenieria Mastersa.com</a></p>
+        <p>
+          <Icon name="mdi:phone" />
+          <a href="tel:+573104080918">+57 310 4080918</a>
+        </p>
+        <p>
+          <Icon name="mdi:email-outline" />
+          <a href="mailto:ventas.ingmaster@gmail.com">ventas.ingmaster@gmail.com</a>
+        </p>
       </div>
 
-      <!-- Medellín -->
+      <!-- Cali -->
       <div class="col">
-        <h4 class="tt">MEDELLÍN</h4>
-        <p><a href="tel:+576044448735">(604) 444 8735</a></p>
-        <p>Carrera 46 No. 48 C sur 40 - Int. 104</p>
-        <p>Envigado – Antioquia</p>
+        <h4 class="tt">CALI</h4>
+        <p>
+          <Icon name="mdi:phone" />
+          <a href="tel:+573104080918">+57 310 4080918</a>
+        </p>
+        <p><Icon name="mdi:map-marker-outline" /> Calle 31# 4 b 35 Porvenir</p>
+        <p>Cali - Valle del Cauca</p>
 
         <div class="divider"></div>
 
         <h4 class="tt tt--thin">¿Quieres hacer parte de nuestro equipo?</h4>
         <p>
           Envía tu hoja de vida al correo
-          <a href="mailto:soporte@Ingenieria Mastersa.com">soporte@Ingenieria Mastersa.com</a>
+          <a href="mailto:recursoshumanos.ingmaster@gmail.com">
+            <Icon name="mdi:email-edit-outline" /> recursoshumanos.ingmaster@gmail.com
+          </a>
           y trabaja con nosotros.
         </p>
       </div>
@@ -98,7 +103,7 @@
 
     <!-- ======= COPY ======= -->
     <div class="copy">
-      Copyright © {{ year }} Ingenieria Master / Arhook-web
+      <Icon name="mdi:copyright" /> {{ year }} Ingenieria Master / Arhook-web
     </div>
 
     <!-- ======= FLOTANTES ======= -->
@@ -109,16 +114,11 @@
       rel="noopener"
       aria-label="Chatear por WhatsApp"
     >
-      <svg viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M19.11 17.51c-.28-.15-1.65-.86-1.9-.96-.26-.1-.45-.15-.65.15-.2.3-.75.95-.92 1.14-.17.2-.34.22-.62.08-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.35.42-.53.14-.18.19-.3.28-.5.09-.2.05-.37-.03-.53-.08-.15-.65-1.56-.9-2.13-.24-.58-.49-.5-.65-.5-.17 0-.37-.02-.57-.02s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.06.15.2 2.1 3.2 5.08 4.49 2.99 1.3 2.99.87 3.53.82.55-.05 1.65-.67 1.88-1.32.23-.66.23-1.22.16-1.34-.07-.12-.25-.2-.53-.35z"/>
-        <path d="M26.7 5.3A13.5 13.5 0 1 0 5.26 26.73L4 30l3.38-1.22A13.5 13.5 0 1 0 26.7 5.3zM16 27.17a11.18 11.18 0 1 1 0-22.36 11.18 11.18 0 0 1 0 22.36z"/>
-      </svg>
+      <Icon name="mdi:whatsapp" aria-hidden="true" />
     </a>
 
     <button class="to-top" @click="scrollTop" aria-label="Volver arriba">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 6l-8 8h16z"/>
-      </svg>
+      <Icon name="mdi:arrow-up" aria-hidden="true" />
     </button>
   </footer>
 </template>
@@ -135,85 +135,28 @@ import post7 from '~/assets/images/posts/7.png'
 import post8 from '~/assets/images/posts/8.png'
 import post9 from '~/assets/images/posts/9.png'
 import post10 from '~/assets/images/posts/10.png'
-
 import post11 from '~/assets/images/posts/11.png'
-
 import post12 from '~/assets/images/posts/12.png'
-
-
 
 const year = new Date().getFullYear()
 const email = ref('')
 
-// ===== Instagram (simple grid local; si tienes API/Token, puedes poblarlo dinámicamente)
+// ===== Instagram
 const igUser = 'cuartosfrioscali'
 const profileUrl = `https://www.instagram.com/${igUser}/`
 const avatarSrc = 'https://i.pravatar.cc/120?img=3' // reemplaza por tu avatar real si lo tienes
 
-const IMG =
-  'https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1198&height=690&quality=75&smart=true'
-
-// 12 posts de ejemplo usando la misma imagen (puedes cambiarlos por tus thumbs reales)
- 
-
 const allPosts = [
-    {
-        Image: post1,
-        href:''
-    },
-     {
-        Image: post2,
-        href:''
-    },
-     {
-        Image: post3,
-        href:''
-    },
-     {
-        Image: post4,
-        href:''
-    },
-     {
-        Image: post5,
-        href:''
-    },
-     {
-        Image: post6,
-        href:''
-    },
-     {
-        Image: post7,
-        href:''
-    },
-     {
-        Image: post8,
-        href:''
-    },
-     {
-        Image: post9,
-        href:''
-    },
-     {
-        Image: post10,
-        href:''
-    },
-     {
-        Image: post11,
-        href:''
-    },
-     {
-        Image: post12,
-        href:''
-    }
-    
+  { Image: post1, href: '' }, { Image: post2, href: 'https://www.instagram.com/p/DBw8wABOpU8/' }, { Image: post3, href: 'https://www.instagram.com/p/DBzSbIEPiC6/' },
+  { Image: post4, href: '' }, { Image: post5, href: '' }, { Image: post6, href: '' },
+  { Image: post7, href: '' }, { Image: post8, href: '' }, { Image: post9, href: '' },
+  { Image: post10, href: '' }, { Image: post11, href: '' }, { Image: post12, href: '' },
 ]
 
 const showCount = ref(6)
 const visiblePosts = computed(() => allPosts.slice(0, showCount.value))
 const canLoadMore = computed(() => showCount.value < allPosts.length)
-function loadMore() {
-  showCount.value = Math.min(showCount.value + 6, allPosts.length)
-}
+function loadMore() { showCount.value = Math.min(showCount.value + 6, allPosts.length) }
 
 // ===== Newsletter
 function onSubscribe() {
@@ -223,7 +166,7 @@ function onSubscribe() {
 }
 
 // ===== WhatsApp flotante
-const whatsappNumber = '573000000000'  // <— cámbialo
+const whatsappNumber = '573104080918'  // <— cámbialo
 const whatsMsg = encodeURIComponent('Hola, quiero más información.')
 const whatsHref = computed(() => `https://wa.me/${whatsappNumber}?text=${whatsMsg}`)
 
@@ -260,13 +203,16 @@ function scrollTop() {
 /* ===== Instagram ===== */
 .ig{ background: #0f2a38; border-bottom: 1px solid var(--line); }
 .ig__title{
-  text-align: center;
+  display:flex; align-items:center; gap:.5rem;
+  justify-content:center;
   padding-top: 18px;
   letter-spacing: .28em;
   text-transform: uppercase;
   font-size: .82rem;
   color: var(--ink);
 }
+.ig__title-icon{ font-size:1.1rem; transform: translateY(-1px); }
+
 .ig__head{
   margin: 14px 0 8px;
   display: flex; align-items: center; gap: 10px;
@@ -333,6 +279,13 @@ function scrollTop() {
   display: flex;
   gap: .6rem;
   align-items: center;
+  position: relative;
+}
+.input-leading{
+  position: absolute;
+  left: .6rem;
+  font-size: 1.1rem;
+  opacity: .7;
 }
 .newsletter input{
   flex: 1;
@@ -341,7 +294,7 @@ function scrollTop() {
   border: 1px solid var(--line);
   color: var(--ink);
   border-radius: 10px;
-  padding: .7rem .9rem;
+  padding: .7rem .9rem .7rem 2rem; /* padding-left extra por icono */
   outline: none;
 }
 .btn-sub{
@@ -352,6 +305,7 @@ function scrollTop() {
   padding: .72rem 1rem;
   font-weight: 700;
   cursor: pointer;
+  display:inline-flex; align-items:center; gap:.4rem;
 }
 .btn-sub:hover{ filter: brightness(1.05); }
 
@@ -370,6 +324,7 @@ function scrollTop() {
 .mini-links a{
   color: var(--ink-dim);
   text-decoration: none;
+  display:inline-flex; align-items:center; gap:.35rem;
 }
 .mini-links a:hover{ text-decoration: underline; }
 
@@ -388,6 +343,7 @@ a:hover{ color: var(--accent); }
   border-top: 1px solid var(--line);
   padding: 14px 1.25rem;
   background: #0b1f2a;
+  display:flex; align-items:center; gap:.4rem; justify-content:center;
 }
 
 /* Flotantes */
@@ -401,8 +357,9 @@ a:hover{ color: var(--accent); }
   display: grid; place-items: center;
   box-shadow: 0 10px 24px rgba(0,0,0,.35);
   z-index: 30;
+  font-size: 28px;
+  color:#fff;
 }
-.wa svg{ width: 28px; height: 28px; fill: #fff; }
 
 .to-top{
   position: fixed;
@@ -416,8 +373,9 @@ a:hover{ color: var(--accent); }
   box-shadow: 0 10px 24px rgba(0,0,0,.35);
   cursor: pointer;
   z-index: 30;
+  display:grid; place-items:center;
+  font-size: 24px;
 }
-.to-top svg{ width: 24px; height: 24px; fill: currentColor; }
 
 /* Responsive */
 @media (min-width: 768px){
@@ -435,17 +393,7 @@ a:hover{ color: var(--accent); }
     padding-left: 18px;
     padding-right: 18px;
   }
-
-  /* Asegura respiración también en estas franjas */
-  .ig .container{
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .copy{
-    padding-left: 18px;
-    padding-right: 18px;
-  }
+  .ig .container{ padding-left: 18px; padding-right: 18px; }
+  .copy{ padding-left: 18px; padding-right: 18px; }
 }
-
 </style>

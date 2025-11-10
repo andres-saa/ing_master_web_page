@@ -41,8 +41,8 @@
             </div>
           </div>
 
-          <button class="nav prev" @click="prev" aria-label="Anterior">‹</button>
-          <button class="nav next" @click="next" aria-label="Siguiente">›</button>
+          <button class="nav prev" @click="prev" aria-label="Anterior"> <Icon name="mdi:arrow-left" aria-hidden="true" /></button>
+          <button class="nav next" @click="next" aria-label="Siguiente"> <Icon name="mdi:arrow-right" aria-hidden="true" /></button>
 
           <div class="dots" role="tablist" aria-label="Paginación de galería">
             <button
@@ -79,8 +79,13 @@
 <script setup lang="ts">
 import { computed, ref, withDefaults } from 'vue'
 import Contacto from '../contacto.vue';
-
+import imgcuartosfiros from '~/assets/images/cuartos.jpg'
+import imgIndustriales from '~/assets/images/industriales.jpeg'
+import imgMantenimiento from '~/assets/images/mantenimiento.jpg'
+import imgSalaProceso from '~/assets/images/salaProceso.jpeg'
 /** Prop para permitir ocultar el hero si se desea (por defecto TRUE) */
+import hero from '~/assets/images/hero.jpeg'
+
 const props = withDefaults(
   defineProps<{ show_hero?: boolean }>(),
   { show_hero: true }
@@ -88,23 +93,13 @@ const props = withDefaults(
 const showHero = computed(() => props.show_hero)
 
 /** Imagen de fondo del hero */
-const heroBg =
-  'https://images.unsplash.com/photo-1543966888-7c1dc482a810?q=80&w=1920&auto=format&fit=crop'
-
+const heroBg = hero
 /** Galería (3 imágenes como en el diseño) */
 const gallery = ref([
-  {
-    src: 'https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1198&height=690&quality=75&smart=true',
-    alt: 'Sala de proceso – acceso y puertas sanitarias'
-  },
-  {
-    src: 'https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1198&height=690&quality=75&smart=true',
-    alt: 'Personal en proceso con control de temperatura'
-  },
-  {
-    src: 'https://elcomercio.pe/resizer/v2/6Y2EDIISGFGVFANEVDCR5LCG34.jpg?auth=f58b5c647a09717054d85bb8b9a6bc624bfcb14fe9c60b5246730ea6a513e2b0&width=1198&height=690&quality=75&smart=true',
-    alt: 'Pasillos y acabados sanitarios en sala de proceso'
-  }
+{ src: imgcuartosfiros , alt: 'Cuarto frío modular' },
+  { src:imgMantenimiento  , alt: 'Evaporadores en cámara' },
+  { src:imgIndustriales , alt: 'Sala de proceso refrigerada' },
+  { src: imgSalaProceso , alt: 'Puertas aisladas' },
 ])
 
 /** Carrusel mínimo */
@@ -149,7 +144,7 @@ html,body{margin:0}
 /* ===== Hero ===== */
 .hero{
   min-height: 56vh;
-  display:flex; align-items:flex-end;
+  display:flex; align-items:center;
   background-position:center; background-size:cover;
   padding:56px 0; border-bottom:1px solid #0f2a38;
 }
@@ -230,4 +225,28 @@ html,body{margin:0}
 @media (max-width: 767.98px){
   .container{ padding-left:18px; padding-right:18px; }
 }
+
+@media (max-width: 767.98px){
+  .carousel{
+    margin-left: -18px;
+    margin-right: -18px;
+  }
+
+  .viewport{
+    border-radius: 0;
+  }
+
+  /* Sin bordes redondeados en las slides e imágenes */
+  .slide{
+    border-radius: 0 !important;
+  }
+  .slide img{
+    border-radius: 0 !important;
+  }
+  .track{
+    border-radius: 0;
+  }
+}
+
+
 </style>

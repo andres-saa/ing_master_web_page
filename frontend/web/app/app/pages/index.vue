@@ -38,7 +38,7 @@
         <p class="eyebrow" v-reveal>Ingenieria Master S.A.S.</p>
         <h2 class="section__title" v-reveal>Proyectos frigoríficos con los más altos estándares de calidad</h2>
         <p class="section__lead" v-reveal>
-          Más de 35 años de experiencia, calidad certificada y soluciones a la medida para la cadena de frío en la industria alimentaria, farmacéutica y logística.
+          Más de 10 años de experiencia, calidad certificada y soluciones a la medida para la cadena de frío en la industria alimentaria, farmacéutica y logística.
         </p>
 
         <div class="metrics__grid">
@@ -239,7 +239,7 @@ const services = [
   {
     category: 'Refrigeración comercial',
     title: 'Mantenimiento',
-    description: 'Planes preventivos y correctivos, auditorías de desempeño, retrofit y asistencia 24/7 para maximizar la disponibilidad de sus equipos.',
+    description: 'Planes preventivos y correctivos, auditorías de desempeño  para maximizar la disponibilidad de sus equipos.',
     image: imgMantenimiento,
     href: '/servicios/mantenimiento'
   },
@@ -256,7 +256,7 @@ const brandLogos = [clienteLogo1,clienteLogo2,clienteLogo3,clienteLogo4,clienteL
 const clientLogos = Array(6).fill(IMG)
 const features = [
   { title: 'Eficiencia energética', text: 'Diseños optimizados para menor consumo y mayor vida útil.', icon: makeIcon('M12 2a10 10 0 100 20 10 10 0 000-20zm1 5v5l4 2') },
-  { title: 'Monitoreo 24/7', text: 'Telemetría y alertas para operar con tranquilidad.', icon: makeIcon('M4 4h16v16H4z M8 12h8') },
+  // { title: 'Monitoreo 24/7', text: 'Telemetría y alertas para operar con tranquilidad.', icon: makeIcon('M4 4h16v16H4z M8 12h8') },
   { title: 'Calidad certificada', text: 'Componentes y procesos con garantía y trazabilidad.', icon: makeIcon('M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5 20l2-7L2 9h7z') },
   { title: 'Cobertura nacional', text: 'Atención en múltiples ciudades con equipos in-house.', icon: makeIcon('M3 11h18v2H3z M12 3v18') }
 ]
@@ -443,8 +443,8 @@ body{
 .metric__label{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-dim)}
 
 /* ====== Services ====== */
-.services{background: rgba(7,19,26,.45)}
-.service{border:1px solid var(--line); border-radius:18px; overflow: clip; margin-block:20px}
+.services{background: rgba(7,19,26,.45);padding: 1rem;}
+.service{  border-radius:18px; overflow: clip; margin-block:20px;}
 .service__inner{display:grid;grid-template-columns:1fr;gap:24px;align-items:center;padding:26px}
 .service--invert .service__inner{direction:rtl}
 .service--invert .service__content{direction:ltr}
@@ -478,4 +478,36 @@ body{
   .impact__grid{grid-template-columns:repeat(4,1fr)}
   .clients__grid{grid-template-columns:repeat(6,1fr)}
 }
+
+/* ====== Mobile: tarjetas sin borde ni padding ====== */
+@media (max-width: 767px){
+  /* Tarjetas y superficies */
+  .card,
+  .card-soft,
+  .surface,
+  .service {
+    border: 0 !important;
+    padding: 0 !important;
+    box-shadow: none; /* opcional: quita sombra para aún más espacio visual */
+    background: transparent; /* opcional */
+  }
+
+  /* Contenido interno de cada servicio */
+  .service__inner{
+    padding: 0 !important;
+    gap: 16px;
+  }
+
+  /* Métricas: quita padding de cada ítem */
+  .metric{
+    padding: 0 !important;
+  }
+
+  /* (Opcional) Logos de marcas: menos padding para que luzcan más grandes */
+  .brands__grid img{
+    padding: .5rem !important;
+    box-shadow: none;
+  }
+}
+
 </style>

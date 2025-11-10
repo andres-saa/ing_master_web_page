@@ -146,7 +146,7 @@ const imgRight =
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 .about{background:#fff;color:#122b37}
-.container{max-width:1160px;margin:0 auto;padding:0 1.25rem}
+.container{max-width:1160px;margin:0 auto;padding:0 1.25rem;}
 .center{text-align:center}
 .mt-20{margin-top:20px}
 
@@ -163,7 +163,7 @@ html,body{margin:0;padding:0}
 .hero{
   min-height: 38vh;
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   background-position:center;
   background-size:cover;
   padding: 44px 0;
@@ -172,7 +172,7 @@ html,body{margin:0;padding:0}
 .hero__title{
   color:var(--white);
   font-size:clamp(2rem,6vw,3rem);
-  margin:0 0 6px;
+
   text-shadow:0 10px 40px rgba(0,0,0,.35);
 }
 

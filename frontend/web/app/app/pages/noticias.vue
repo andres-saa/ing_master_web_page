@@ -273,7 +273,7 @@ html,body{margin:0;padding:0}
 .hero{
   min-height:36vh;
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   background-position:center;
   background-size:cover;
   padding:44px 0;
